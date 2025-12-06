@@ -1,0 +1,26 @@
+import { useDeleteTodo } from "@/store/todos";
+import { Button } from "../ui/button";
+
+export default function TodoItem({
+  id,
+  content,
+}: {
+  id: number;
+  content: string;
+}) {
+  const deleteTodo = useDeleteTodo();
+
+  const handleDeleteClick = () => {
+    console.log("delete");
+    deleteTodo(id);
+  };
+
+  return (
+    <div className="items-conter flex justify-between border p-2">
+      {content}
+      <Button onClick={handleDeleteClick} variant={"destructive"}>
+        삭제
+      </Button>
+    </div>
+  );
+}
