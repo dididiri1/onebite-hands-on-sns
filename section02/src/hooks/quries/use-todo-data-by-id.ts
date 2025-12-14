@@ -1,13 +1,15 @@
 import { fetchTodoById } from "@/api/fetch-todo-by-id";
+import { QUERY_KEYS } from "@/lib/constants";
 import { useQuery } from "@tanstack/react-query";
 
-export function useTodoDataById(id: number) {
+export function useTodoDataById(id: string) {
   return useQuery({
     queryFn: () => fetchTodoById(id),
-    queryKey: ["todos", id],
+    queryKey: QUERY_KEYS.todo.datail(id),
 
     staleTime: 5000,
-    
+    gcTime: 5000,
+
     // refetchInterval: 1000,
     // refetchOnMount: false,
     // refetchOnWindowFocus: false,
