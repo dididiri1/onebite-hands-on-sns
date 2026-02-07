@@ -1,5 +1,10 @@
 import RoteRoute from "@/root-route";
+import SessionProvider from "./provider/session-provider";
 
 export default function App() {
-  return <RoteRoute />;
+  return (
+    <SessionProvider>
+      <RoteRoute />
+    </SessionProvider>
+  );
 }
